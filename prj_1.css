@@ -1,0 +1,224 @@
+/* =========================================================
+   Color Scheme Switcher — Premium Design (CSS Only)
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    background-color: #0f172a;
+    color: #f1f5f9;
+    --text-heading: #ffffff;
+    --text-subtle: #94a3b8;
+    --card-bg: rgba(255, 255, 255, 0.06);
+    --card-border: rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    transition: background-color 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Glassmorphism Card */
+.canvas {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 28px;
+    padding: 48px 40px;
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition: background 0.5s ease, border-color 0.5s ease;
+    animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    max-width: 480px;
+    width: 100%;
+}
+
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    color: var(--text-heading);
+    transition: color 0.5s ease;
+}
+
+/* Color Buttons Grid */
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+    width: 100%;
+}
+
+/* Individual Color Swatch Buttons */
+.button {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 20px;
+    display: block;
+    cursor: pointer;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    transition: 
+        transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+    overflow: hidden;
+}
+
+/* Subtle inner shine on all buttons */
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 17px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Hover label tooltip via CSS ::after */
+.button::after {
+    position: absolute;
+    bottom: -36px;
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+}
+
+.button:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.button:hover {
+    transform: translateY(-6px) scale(1.05);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.button:active {
+    transform: translateY(-2px) scale(0.97);
+}
+
+/* Individual Button Colors */
+#grey {
+    background: linear-gradient(145deg, #64748b, #475569);
+    box-shadow: 0 8px 24px -4px rgba(71, 85, 105, 0.5);
+}
+
+#grey::after {
+    content: 'Slate';
+}
+
+#grey:hover {
+    box-shadow: 0 16px 32px -4px rgba(71, 85, 105, 0.6);
+}
+
+#white {
+    background: linear-gradient(145deg, #ffffff, #e2e8f0);
+    box-shadow: 0 8px 24px -4px rgba(226, 232, 240, 0.4);
+}
+
+#white::after {
+    content: 'Light';
+}
+
+#white:hover {
+    box-shadow: 0 16px 32px -4px rgba(226, 232, 240, 0.5);
+}
+
+#blue {
+    background: linear-gradient(145deg, #3b82f6, #1d4ed8);
+    box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.5);
+}
+
+#blue::after {
+    content: 'Ocean';
+}
+
+#blue:hover {
+    box-shadow: 0 16px 32px -4px rgba(37, 99, 235, 0.6);
+}
+
+#yellow {
+    background: linear-gradient(145deg, #facc15, #ca8a04);
+    box-shadow: 0 8px 24px -4px rgba(202, 138, 4, 0.5);
+}
+
+#yellow::after {
+    content: 'Amber';
+}
+
+#yellow:hover {
+    box-shadow: 0 16px 32px -4px rgba(202, 138, 4, 0.6);
+}
+
+/* Subtitle text */
+h2 {
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.7;
+    max-width: 360px;
+    text-align: center;
+    color: var(--text-subtle);
+    transition: color 0.5s ease;
+}
+
+h2 span {
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .canvas {
+        padding: 32px 24px;
+        border-radius: 22px;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    .button-container {
+        gap: 12px;
+    }
+
+    .button {
+        border-radius: 16px;
+    }
+}
